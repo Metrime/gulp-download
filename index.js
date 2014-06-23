@@ -10,10 +10,8 @@ module.exports = function(urls){
 		cb();
 	});
 
-
-	var files = typeof urls === 'string' ? [urls] : urls;
+	var files = (typeof urls === 'string' || typeof urls === 'object') ? [urls] : urls;
 	var downloadCount = 0;
-
 
 	function download(url){
 		var fileName,
