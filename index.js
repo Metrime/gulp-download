@@ -39,8 +39,14 @@ module.exports = function(urls){
 			}
 		});
 
-		function downloadHandler(err, res, body){
-			var file = new gutil.File( {path:fileName, contents: new Buffer(body)} );
+		function downloadHandler(err, res, body) {
+			var file;
+
+			if (err) {
+				return stream.emit('error', err);
+			}
+
+			file = new gutil.File( {path:fileName, contents: new Buffer(body)} );
 			stream.queue(file);
 
 			process.stdout.write(' '+col.green('Done\n'));
