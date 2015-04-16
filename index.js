@@ -18,12 +18,15 @@ module.exports = function(urls){
 	function download(url){
 		var fileName,
 			firstLog = true;
-		
+
 		if (typeof url === "object") {
 			fileName = url.file;
 			url = url.url;
 		} else {
-			fileName = url.split('/').pop();
+            if (!url.match(/(http|https):/gi)) {
+                url = "http:"+ url;
+            }
+            fileName = url.split('/').pop();
 		}
 		progress(
 			request({url:url,encoding:null},downloadHandler),
