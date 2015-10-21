@@ -4,7 +4,7 @@ var through = require("through"),
 	progress = require("request-progress"),
 	col = gutil.colors;
 
-module.exports = function(urls){
+module.exports = function(urls, options){
 	var stream = through(function(file,enc,cb){
 		this.push(file);
 		cb();
@@ -18,15 +18,20 @@ module.exports = function(urls){
 	function download(url){
 		var fileName,
 			firstLog = true;
-		
+
 		if (typeof url === "object") {
 			fileName = url.file;
 			url = url.url;
 		} else {
 			fileName = url.split('/').pop();
 		}
+
+		if (options === undefined) options = {encoding:null};
+
+		options.url = url;
+
 		progress(
-			request({url:url,encoding:null},downloadHandler),
+			request(options,downloadHandler),
 			{throttle:1000,delay:1000}
 		)
 		.on('progress',function(state){
@@ -56,4 +61,3 @@ module.exports = function(urls){
 
 	return stream;
 };
-
