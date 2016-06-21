@@ -30,7 +30,7 @@ module.exports = function(urls){
 			{throttle:1000,delay:1000}
 		)
 		.on('progress',function(state){
-			process.stdout.write(' '+state.percent+'%');
+			process.stdout.write(' ' + Math.round(state.percentage * 100) +'%');
 		})
 		.on('data',function(){
 			if(firstLog){
