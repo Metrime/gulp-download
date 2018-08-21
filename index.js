@@ -2,18 +2,19 @@ var through = require("through"),
 	gutil = require("gulp-util"),
 	request = require("request"),
 	progress = require("request-progress"),
+	streams = require('stream')
 	col = gutil.colors;
 
-module.exports = function(urls){
+function downloadFile (urls, cb) {
+	const percents = new streams.Stream()
+	cb(null, percents)
 	var stream = through(function(file,enc,cb){
 		this.push(file);
 		cb();
 	});
 
-
 	var files = typeof urls === 'string' ? [urls] : urls;
 	var downloadCount = 0;
-
 
 	function download(url){
 		var fileName,
@@ -31,6 +32,7 @@ module.exports = function(urls){
 		)
 		.on('progress',function(state){
 			process.stdout.write(' '+state.percent+'%');
+			percents.emit('data', state.percent)
 		})
 		.on('data',function(){
 			if(firstLog){
@@ -57,3 +59,4 @@ module.exports = function(urls){
 	return stream;
 };
 
+module.exports.downloadFile = downloadFile

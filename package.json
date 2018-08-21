@@ -3,19 +3,20 @@
   "version": "0.0.1",
   "description": "Gulp plugin for downloading files via http/https.",
   "license": "MIT",
-  "author":"Michael Ostermann <metrime@icloud.com>",
+  "author": "Michael Ostermann <metrime@icloud.com>",
   "repository": "https://github.com/Metrime/gulp-download.git",
-  "keywords":[
-  	"gulpplugin",
-  	"download",
+  "keywords": [
+    "gulpplugin",
+    "download",
     "http",
     "https"
   ],
-  "dependencies":{
-    "gulp-util":"latest",
-    "through":"latest",
-    "request":"latest",
-    "request-progress":"latest"
+  "dependencies": {
+    "gulp-util": "latest",
+    "request": "latest",
+    "request-progress": "latest",
+    "stream": "0.0.2",
+    "through": "latest"
   },
-  "main":"index.js"
+  "main": "index.js"
 }
