@@ -1,5 +1,5 @@
 {
-  "name": "gulp-download",
+  "name": "gulp-downloads",
   "version": "0.0.1",
   "description": "Gulp plugin for downloading files via http/https.",
   "license": "MIT",
@@ -12,11 +12,11 @@
     "https"
   ],
   "dependencies": {
-    "gulp-util": "latest",
-    "request": "latest",
-    "request-progress": "latest",
+    "gulp-util": "^3.0.8",
+    "request": "^2.88.0",
+    "request-progress": "^3.0.0",
     "stream": "0.0.2",
-    "through": "latest"
+    "through": "^2.3.8"
   },
   "main": "index.js"
 }
