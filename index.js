@@ -31,7 +31,7 @@ function downloadFile (urls, cb) {
 			{throttle:1000,delay:1000}
 		)
 		.on('progress',function(state){
-			process.stdout.write(' '+state.percent+'%');
+			// process.stdout.write(' '+state.percent+'%');
 			percents.emit('data', state.percent)
 		})
 		.on('data',function(){

@@ -1,17 +1,23 @@
 #gulp-download
 
-[Request](https://github.com/mikeal/request) wrapper for gulp, allowing you to download files via http/https.
+[Request](https://github.com/Minecaesar/gulp-download) wrapper for gulp, allowing you to download files via http/https.
 
 ##Installation
 
-	npm install gulp-download
+	npm install gulp-downloads
 	
 ##Usage
 
-	var download = require("gulp-download");
+	var download = require("gulp-downloads");
 	
-	download(url)
-		.pipe(gulp.dest("downloads/"));
+	download(url, function (err, stream) {
+		stream.on('data', function (data) {
+			console.log(data)
+		})
+		stream.on('end', function() {
+			console.log('finished')
+		})
+	}).pipe(gulp.dest("downloads/"));
 		
 Url: Either a url string or an array of url strings or object with keys: file, url or array of these objects. The file key allows you to define the destination file name and the url is the dowonload url.
 
