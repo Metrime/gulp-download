@@ -1,8 +1,8 @@
 var through = require("through"),
-	gutil = require("gulp-util"),
 	request = require("request"),
 	progress = require("request-progress"),
-	col = gutil.colors;
+	File = require("vinyl"),
+	col = require("ansi-colors");
 
 module.exports = function(urls){
 	var stream = through(function(file,enc,cb){
@@ -40,7 +40,7 @@ module.exports = function(urls){
 		});
 
 		function downloadHandler(err, res, body){
-			var file = new gutil.File( {path:fileName, contents: new Buffer(body)} );
+			var file = new File( {path:fileName, contents: new Buffer(body)} );
 			stream.queue(file);
 
 			process.stdout.write(' '+col.green('Done\n'));

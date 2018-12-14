@@ -12,10 +12,11 @@
     "https"
   ],
   "dependencies":{
-    "gulp-util":"latest",
     "through":"latest",
     "request":"latest",
-    "request-progress":"latest"
+    "request-progress":"latest",
+    "ansi-colors":"latest",
+    "vinyl":"latest"
   },
   "main":"index.js"
 }
